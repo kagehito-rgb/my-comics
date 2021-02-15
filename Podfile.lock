@@ -1,0 +1,54 @@
+PODS:
+  - LicensePlist (3.0.5)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - PKHUD (5.3.0)
+  - R.swift (5.3.1):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
+  - Realm (10.5.2):
+    - Realm/Headers (= 10.5.2)
+  - Realm/Headers (10.5.2)
+  - RealmSwift (10.5.2):
+    - Realm (= 10.5.2)
+  - SwiftLint (0.42.0)
+  - XCGLogger (7.0.1):
+    - XCGLogger/Core (= 7.0.1)
+  - XCGLogger/Core (7.0.1):
+    - ObjcExceptionBridging
+
+DEPENDENCIES:
+  - LicensePlist
+  - PKHUD (~> 5.0)
+  - R.swift
+  - RealmSwift
+  - SwiftLint
+  - XCGLogger (~> 7.0.1)
+
+SPEC REPOS:
+  trunk:
+    - LicensePlist
+    - ObjcExceptionBridging
+    - PKHUD
+    - R.swift
+    - R.swift.Library
+    - Realm
+    - RealmSwift
+    - SwiftLint
+    - XCGLogger
+
+SPEC CHECKSUMS:
+  LicensePlist: 11c638fa9dc22ddb5771cdf910242ae1ba2684da
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  R.swift: 56ec7e3aef34b9eee47a659e42462db2c1cc5ac3
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  Realm: 2e1bc0d28301006176692da234deff51f867d5ae
+  RealmSwift: a522ad39715e8b4e491af4460059bc32b84f5a9b
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
+  XCGLogger: 1943831ef907df55108b0b18657953f868de973b
+
+PODFILE CHECKSUM: d2de2bf5c325440ece90601db71e4c0b895e8568
+
+COCOAPODS: 1.10.0
