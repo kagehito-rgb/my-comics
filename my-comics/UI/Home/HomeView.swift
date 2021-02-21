@@ -17,6 +17,7 @@ struct HomeView: View {
             VStack(alignment: .leading) {
                 SearchBar(text: $searchText)
                 Spacer()
+                ComicList()
             }
             .navigationBarTitle(
                 "Home",
