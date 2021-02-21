@@ -11,7 +11,10 @@ import SwiftUI
 struct HomeView: View {
 
     @State var searchText: String = ""
+    // TODO: - ViewModel経由で取得
+    @State var isShowingEdit = false
 
+    // MARK: - body
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -23,6 +26,14 @@ struct HomeView: View {
                 "Home",
                 displayMode: .inline
             )
+            .navigationBarItems(trailing: Button(action: {
+                self.isShowingEdit.toggle()
+            }) {
+                Image(systemName: "pencil.tip.crop.circle.badge.plus")
+            }
+            .sheet(isPresented: $isShowingEdit) {
+                ComicEditView()
+            })
             .padding(20)
         }
     }

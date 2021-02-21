@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-/// 検索バーのView。SwitfUIにデフォルトでSearchBarなるものは存在しないらしいので、
+/// 検索バーのView。
+/// ***
+/// SwitfUIにデフォルトでSearchBarなるものは存在しないらしいので、
 /// 既存のUISearchBarを使って作成する。
-/// https://axelhodler.medium.com/creating-a-search-bar-for-swiftui-e216fe8c8c7f
+/// [リンク](https://axelhodler.medium.com/creating-a-search-bar-for-swiftui-e216fe8c8c7f)
 struct SearchBar: UIViewRepresentable {
 
     @Binding var text: String
