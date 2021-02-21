@@ -12,7 +12,10 @@ struct ComicList: View {
     var body: some View {
         List {
             ForEach(0...10, id: \.self) { _ in
-                ComicRow()
+                NavigationLink(
+                    destination: ComicDetailView()) {
+                    ComicRow()
+                }
             }
         }
     }

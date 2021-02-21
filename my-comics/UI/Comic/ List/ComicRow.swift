@@ -37,32 +37,37 @@ struct ComicRow: View {
             // 二行目 次巻予定日・編集ボタン・削除ボタン
             HStack {
                 Spacer()
-                Text("次巻 2021年3月1日発売")
+                Text("次巻")
+                    .font(.system(size: 14))
+                DateTextView(date: Date())
                     .font(.system(size: 14))
                 Spacer().frame(width: 16)
-                Button(action: {
-                    self.isShowingEdit.toggle()
-                }) {
-                    Image(systemName: "pencil")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                        .font(.none)
-                        .foregroundColor(.blue)
-                }.sheet(isPresented: $isShowingEdit) {
-                    ComicEditView()
-                }
+                Image(systemName: "pencil")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .font(.none)
+                    .foregroundColor(.blue)
+                    .onTapGesture {
+                        self.isShowingEdit.toggle()
+                    }
+                    .sheet(isPresented: $isShowingEdit) {
+                        ComicEditView()
+                    }
                 Spacer().frame(width: 12)
-                Button(action: {
-                    // TODO: - 削除ボタン(ゴミ箱)タップ時にリスト&DBから削除 -
-                }) {
-                    Image(systemName: "trash")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                        .font(.none)
-                        .foregroundColor(.gray)
-                }
+                // TODO: - 削除ボタン(ゴミ箱)タップ時にリスト&DBから削除 -
+                Image(systemName: "trash")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .font(.none)
+                    .foregroundColor(.gray)
+                    .onTapGesture {
+                        self.isShowingEdit.toggle()
+                    }
+                    .sheet(isPresented: $isShowingEdit) {
+                        ComicEditView()
+                    }
                 Spacer().frame(width: 12)
             }
             Spacer().frame(height: 8)

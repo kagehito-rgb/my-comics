@@ -21,21 +21,18 @@ struct ComicEditView: View {
     /// 外部から環境変数(EnvironmentValues)設定してもなんか効かない(DatePicker)
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
-                Spacer().frame(height: 32)
+            VStack(alignment: .leading, spacing: 32) {
+                Spacer().frame(height: 4)
                 VStack(alignment: .leading) {
                     Text("タイトル")
                     TextField("タイトルを入力してください", text: $titleText)
                 }
-                Spacer().frame(height: 32)
                 Stepper(value: $haveVolume) {
                     Text("所持している巻数:  \(haveVolume)")
                 }
-                Spacer().frame(height: 32)
                 Stepper(value: $nowVolume) {
                     Text("既刊:  \(nowVolume)")
                 }
-                Spacer().frame(height: 32)
                 HStack {
                     Text("次巻予定日").frame(
                         maxWidth: .infinity,
@@ -48,9 +45,8 @@ struct ComicEditView: View {
                     )
                     .datePickerStyle(CompactDatePickerStyle())
                     .labelsHidden()
-                    .frame(width: 100, height: 40)
+                    .frame(width: 80, height: 40, alignment: .trailing)
                     .environment(\.locale, Locale(identifier: "ja_JP"))
-                    Spacer().frame(width: 4)
                 }
                 Spacer()
             }
