@@ -14,7 +14,7 @@ struct DateTextView: View {
 
     init(
         date: Date,
-        format: DateFormatter = DateFormatBuilder().build()
+        format: DateFormatter
     ) {
         self.date = date
         self.format = format

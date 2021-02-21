@@ -12,6 +12,8 @@ struct ComicRow: View {
     // TODO: - ViewModel経由で取得
     @State var isShowingEdit = false
 
+    private let format = DateFormatBuilder().build()
+
     // MARK: - body
     var body: some View {
         VStack {
@@ -39,7 +41,7 @@ struct ComicRow: View {
                 Spacer()
                 Text("次巻")
                     .font(.system(size: 14))
-                DateTextView(date: Date())
+                DateTextView(date: Date(), format: format)
                     .font(.system(size: 14))
                 Spacer().frame(width: 16)
                 Image(systemName: "pencil")

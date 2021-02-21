@@ -15,6 +15,8 @@ struct ComicDetailView: View {
     @State var nowVolume = 11
     @State var nextReleaseDate = Date()
 
+    private let format = DateFormatBuilder().build()
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 32) {
@@ -31,7 +33,7 @@ struct ComicDetailView: View {
                 }
                 HStack {
                     Text("次巻予定日:")
-                    DateTextView(date: nextReleaseDate)
+                    DateTextView(date: nextReleaseDate, format: format)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 Spacer()
