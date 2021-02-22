@@ -130,12 +130,12 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C650BD7825E2E50A002F272B /* Model */ = {
+		C650BD7825E2E50A002F272B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				C650BD7A25E3496E002F272B /* Entities */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C650BD7925E2E512002F272B /* Realm */ = {
@@ -243,7 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				C650BD7925E2E512002F272B /* Realm */,
-				C650BD7825E2E50A002F272B /* Model */,
+				C650BD7825E2E50A002F272B /* Models */,
 				C65A647B25DC2B54006C1E05 /* UI */,
 				C68AFC7E25DAE3F20005A376 /* my_comicsApp.swift */,
 				C68AFC8025DAE3F20005A376 /* ContentView.swift */,
