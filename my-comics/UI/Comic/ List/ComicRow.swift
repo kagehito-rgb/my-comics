@@ -12,6 +12,9 @@ struct ComicRow: View {
     // TODO: - ViewModel経由で取得
     @State var isShowingEdit = false
 
+    @ObservedObject var viewModel: ComicListViewModel
+    var comic: ComicEntity
+
     private let format = DateFormatBuilder().build()
 
     // MARK: - body
@@ -21,7 +24,7 @@ struct ComicRow: View {
             // 一行目 漫画タイトル・所持巻数・既刊数
             HStack {
                 Spacer().frame(width: 12)
-                Text("漫画タイトル")
+                Text(comic.title)
                     .font(.system(size: 20))
                     .fontWeight(.bold)
                     .lineLimit(1)
@@ -29,9 +32,9 @@ struct ComicRow: View {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 Spacer().frame(width: 16)
-                Text("所持巻数\n10巻")
+                Text("\(comic.haveVolume)")
                     .font(.system(size: 12))
-                Text("既刊\n11巻")
+                Text("\(comic.nextReleaseDate)")
                     .font(.system(size: 12))
                 Spacer().frame(width: 12)
             }
@@ -41,7 +44,7 @@ struct ComicRow: View {
                 Spacer()
                 Text("次巻")
                     .font(.system(size: 14))
-                DateTextView(date: Date(), format: format)
+                DateTextView(date: comic.nextReleaseDate, format: format)
                     .font(.system(size: 14))
                 Spacer().frame(width: 16)
                 Image(systemName: "pencil")
@@ -54,7 +57,7 @@ struct ComicRow: View {
                         self.isShowingEdit.toggle()
                     }
                     .sheet(isPresented: $isShowingEdit) {
-                        ComicEditView()
+                        ComicEditView(comic: comic)
                     }
                 Spacer().frame(width: 12)
                 // TODO: - 削除ボタン(ゴミ箱)タップ時にリスト&DBから削除 -
@@ -65,10 +68,7 @@ struct ComicRow: View {
                     .font(.none)
                     .foregroundColor(.gray)
                     .onTapGesture {
-                        self.isShowingEdit.toggle()
-                    }
-                    .sheet(isPresented: $isShowingEdit) {
-                        ComicEditView()
+                        viewModel.delete(entity: comic)
                     }
                 Spacer().frame(width: 12)
             }
@@ -79,6 +79,9 @@ struct ComicRow: View {
 
 struct ComicRow_Previews: PreviewProvider {
     static var previews: some View {
-        ComicRow()
+        ComicRow(
+            viewModel: ComicListViewModel(),
+            comic: ComicEntity()
+        )
     }
 }

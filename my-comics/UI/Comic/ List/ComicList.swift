@@ -9,12 +9,17 @@ import SwiftUI
 
 /// 漫画一覧View
 struct ComicList: View {
+    @StateObject var viewModel: ComicListViewModel = ComicListViewModel()
+
     var body: some View {
         List {
-            ForEach(0...10, id: \.self) { _ in
+            ForEach(viewModel.comicEntities) { comic in
                 NavigationLink(
-                    destination: ComicDetailView()) {
-                    ComicRow()
+                    destination: ComicDetailView(comic: comic)) {
+                    ComicRow(
+                        viewModel: viewModel,
+                        comic: comic
+                    )
                 }
             }
         }

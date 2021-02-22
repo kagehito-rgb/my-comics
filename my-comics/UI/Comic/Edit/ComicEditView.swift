@@ -10,11 +10,8 @@ import SwiftUI
 /// 漫画の情報を編集するView
 struct ComicEditView: View {
     @Environment(\.presentationMode) var presentationMode
-    // TODO: - あとでこの辺はViewModel経由で取得・更新するように
-    @State var titleText = ""
-    @State var haveVolume = 10
-    @State var nowVolume = 11
-    @State var nextReleaseDate = Date()
+    @StateObject var viewModel: ComicEditViewModel = ComicEditViewModel()
+    @State var comic: ComicEntity
 
     // MARK: - body
     /// - Remark
@@ -25,13 +22,13 @@ struct ComicEditView: View {
                 Spacer().frame(height: 4)
                 VStack(alignment: .leading) {
                     Text("タイトル")
-                    TextField("タイトルを入力してください", text: $titleText)
+                    TextField("タイトルを入力してください", text: $comic.title)
                 }
-                Stepper(value: $haveVolume) {
-                    Text("所持している巻数:  \(haveVolume)")
+                Stepper(value: $comic.haveVolume) {
+                    Text("所持している巻数:  \(comic.haveVolume)")
                 }
-                Stepper(value: $nowVolume) {
-                    Text("既刊:  \(nowVolume)")
+                Stepper(value: $comic.publishedVolume) {
+                    Text("既刊:  \(comic.publishedVolume)")
                 }
                 HStack {
                     Text("次巻予定日").frame(
@@ -40,7 +37,7 @@ struct ComicEditView: View {
                     )
                     DatePicker(
                         "次巻予定日",
-                        selection: $nextReleaseDate,
+                        selection: $comic.nextReleaseDate,
                         displayedComponents: [.date]
                     )
                     .datePickerStyle(CompactDatePickerStyle())
@@ -57,7 +54,7 @@ struct ComicEditView: View {
             }) {
                 Text("Cancel")
             }, trailing: Button(action: {
-                // TODO: - 保存ボタンタップした時の挙動
+                viewModel.update(entity: comic)
             }) {
                 Text("Save")
             })
@@ -68,6 +65,6 @@ struct ComicEditView: View {
 
 struct ComicEditView_Previews: PreviewProvider {
     static var previews: some View {
-        ComicEditView()
+        ComicEditView(comic: ComicEntity())
     }
 }

@@ -10,5 +10,5 @@ import RealmSwift
 
 /// Realmを提供する事を示すプロトコル。
 protocol RealmProviderProtocol {
-    func provide() throws -> Relam
+    func provide() throws -> Realm
 }

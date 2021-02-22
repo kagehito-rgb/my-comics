@@ -32,7 +32,8 @@ struct HomeView: View {
                 Image(systemName: "pencil.tip.crop.circle.badge.plus")
             }
             .sheet(isPresented: $isShowingEdit) {
-                ComicEditView()
+                // 新規追加時はComic(漫画)データを初期化して渡す
+                ComicEditView(comic: ComicEntity())
             })
             .padding(20)
         }

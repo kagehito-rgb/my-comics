@@ -22,6 +22,4 @@ protocol ComicRepositoryProtocol {
     func delete(entity: ComicEntity) -> Void
     /// 追加されるレコードのIDを取得
     func newID() -> ComicID
-    /// 指定したIDに紐づくComic(漫画)データの取得
-    func getByID(id: ComicID) -> Results<ComicEntity>
 }
