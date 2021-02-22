@@ -32,9 +32,9 @@ struct ComicRow: View {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 Spacer().frame(width: 16)
-                Text("\(comic.haveVolume)")
+                Text("所持巻数\n\(comic.haveVolume)巻")
                     .font(.system(size: 12))
-                Text("\(comic.nextReleaseDate)")
+                Text("既刊\n\(comic.publishedVolume)巻")
                     .font(.system(size: 12))
                 Spacer().frame(width: 12)
             }
@@ -44,8 +44,10 @@ struct ComicRow: View {
                 Spacer()
                 Text("次巻")
                     .font(.system(size: 14))
-                DateTextView(date: comic.nextReleaseDate, format: format)
-                    .font(.system(size: 14))
+                DateTextView(
+                    date: comic.nextReleaseDate,
+                    format: format
+                ).font(.system(size: 14))
                 Spacer().frame(width: 16)
                 Image(systemName: "pencil")
                     .resizable()
@@ -57,7 +59,9 @@ struct ComicRow: View {
                         self.isShowingEdit.toggle()
                     }
                     .sheet(isPresented: $isShowingEdit) {
-                        ComicEditView(comic: comic)
+                        ComicEditView(
+                            viewModel: ComicEditViewModel(comic: comic)
+                        )
                     }
                 Spacer().frame(width: 12)
                 // TODO: - 削除ボタン(ゴミ箱)タップ時にリスト&DBから削除 -

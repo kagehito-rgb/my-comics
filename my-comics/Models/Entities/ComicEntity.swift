@@ -26,27 +26,12 @@ protocol ComicEntityProtocol: Entity, Identifiable {
 /// - NOTE
 /// モバイルDBに保存される事を想定している。
 class ComicEntity: Object, ComicEntityProtocol {
-    @objc dynamic var id: ComicID
-    @objc dynamic var title: String
-    @objc dynamic var haveVolume: Int
-    @objc dynamic var publishedVolume: Int
-    @objc dynamic var nextReleaseDate: Date
+    @objc dynamic var id: ComicID = 0
+    @objc dynamic var title: String = ""
+    @objc dynamic var haveVolume: Int = 1
+    @objc dynamic var publishedVolume: Int = 1
+    @objc dynamic var nextReleaseDate: Date = Date()
 
-    init(
-        id: ComicID = 0,
-        title: String = "",
-        haveVolume: Int = 1,
-        publishedVolume: Int = 1,
-        nextReleaseDate: Date = Date()
-    ) {
-        self.id = id
-        self.title = title
-        self.haveVolume = haveVolume
-        self.publishedVolume = publishedVolume
-        self.nextReleaseDate = nextReleaseDate
-    }
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
+    override class func primaryKey() -> String? { "id" }
+    override class func indexedProperties() -> [String] { ["id"] }
 }

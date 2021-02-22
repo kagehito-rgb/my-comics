@@ -25,7 +25,8 @@ class ComicRepository: ComicRepositoryProtocol {
         return realm.objects(ComicEntity.self).sorted(byKeyPath: ComicEntity.primaryKey()!, ascending: false)
     }
 
-    func add(entity: ComicEntity) -> Void {
+    func addNew(entity: ComicEntity) -> Void {
+        entity.id = newID()
         try! realm.write {
             realm.add(entity)
         }
@@ -43,7 +44,8 @@ class ComicRepository: ComicRepositoryProtocol {
         }
     }
 
-    func newID() -> ComicID {
+    /// 追加されるレコードのIDを取得
+    private func newID() -> ComicID {
         return (all().first?.id ?? 0) + 1
     }
 }

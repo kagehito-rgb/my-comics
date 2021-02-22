@@ -8,28 +8,25 @@
 import Foundation
 
 protocol ComicEditViewModelProtocol {
-    func newID() -> ComicID
-    func add(entity: ComicEntity) -> Void
+    func addNew(entity: ComicEntity) -> Void
     func update(entity: ComicEntity) -> Void
 }
 
 class ComicEditViewModel: ObservableObject {
+    @Published var comic: ComicEntity
 
     let repository: ComicRepositoryProtocol
 
-    init() {
+    init(comic: ComicEntity) {
         self.repository = ComicRepository(provider: RealmProvider.shared)
+        self.comic = comic
     }
 }
 
 extension ComicEditViewModel: ComicEditViewModelProtocol {
 
-    func newID() -> ComicID {
-        repository.newID()
-    }
-
-    func add(entity: ComicEntity) {
-        repository.add(entity: entity)
+    func addNew(entity: ComicEntity) {
+        repository.addNew(entity: entity)
     }
 
     func update(entity: ComicEntity) {

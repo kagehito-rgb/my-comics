@@ -33,7 +33,10 @@ struct HomeView: View {
             }
             .sheet(isPresented: $isShowingEdit) {
                 // 新規追加時はComic(漫画)データを初期化して渡す
-                ComicEditView(comic: ComicEntity())
+                ComicEditView(
+                    viewModel: ComicEditViewModel(comic: ComicEntity()),
+                    editMode: .AddNew
+                )
             })
             .padding(20)
         }
