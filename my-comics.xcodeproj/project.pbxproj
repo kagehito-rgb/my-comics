@@ -11,6 +11,9 @@
 		26ECF18C36D24EED1B3D31BE /* Pods_my_comicsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35969F2D0D5ED76BC2FD2182 /* Pods_my_comicsTests.framework */; };
 		865C35A410555EB42B0A33B2 /* Pods_my_comicsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8937C2F9F89F084B49E19C6 /* Pods_my_comicsUITests.framework */; };
 		C650BD7725E2C1EF002F272B /* DateTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD7625E2C1EF002F272B /* DateTextView.swift */; };
+		C650BD7C25E34993002F272B /* ComicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD7B25E34993002F272B /* ComicEntity.swift */; };
+		C650BD7E25E34A12002F272B /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD7D25E34A12002F272B /* Entity.swift */; };
+		C650BD8025E3562A002F272B /* EntityID.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD7F25E3562A002F272B /* EntityID.swift */; };
 		C65A647D25DC2BAB006C1E05 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A647C25DC2BAB006C1E05 /* HomeView.swift */; };
 		C65A648125DC41CF006C1E05 /* ComicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A648025DC41CF006C1E05 /* ComicList.swift */; };
 		C65A648725DC4282006C1E05 /* ComicRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A648625DC4282006C1E05 /* ComicRow.swift */; };
@@ -49,6 +52,9 @@
 		76E3C5F359E835295D79E27E /* Pods-my-comicsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-my-comicsUITests.debug.xcconfig"; path = "Target Support Files/Pods-my-comicsUITests/Pods-my-comicsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B8CB67D3BB174F2FFAA8438C /* Pods-my-comics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-my-comics.release.xcconfig"; path = "Target Support Files/Pods-my-comics/Pods-my-comics.release.xcconfig"; sourceTree = "<group>"; };
 		C650BD7625E2C1EF002F272B /* DateTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextView.swift; sourceTree = "<group>"; };
+		C650BD7B25E34993002F272B /* ComicEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicEntity.swift; sourceTree = "<group>"; };
+		C650BD7D25E34A12002F272B /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		C650BD7F25E3562A002F272B /* EntityID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityID.swift; sourceTree = "<group>"; };
 		C65A647C25DC2BAB006C1E05 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C65A648025DC41CF006C1E05 /* ComicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicList.swift; sourceTree = "<group>"; };
 		C65A648625DC4282006C1E05 /* ComicRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicRow.swift; sourceTree = "<group>"; };
@@ -122,6 +128,31 @@
 				496533BC903F40EEAED41F30 /* Pods-my-comicsUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C650BD7825E2E50A002F272B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C650BD7A25E3496E002F272B /* Entities */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C650BD7925E2E512002F272B /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		C650BD7A25E3496E002F272B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C650BD7B25E34993002F272B /* ComicEntity.swift */,
+				C650BD7D25E34A12002F272B /* Entity.swift */,
+				C650BD7F25E3562A002F272B /* EntityID.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		C65A647B25DC2B54006C1E05 /* UI */ = {
@@ -211,6 +242,8 @@
 		C68AFC7D25DAE3F20005A376 /* my-comics */ = {
 			isa = PBXGroup;
 			children = (
+				C650BD7925E2E512002F272B /* Realm */,
+				C650BD7825E2E50A002F272B /* Model */,
 				C65A647B25DC2B54006C1E05 /* UI */,
 				C68AFC7E25DAE3F20005A376 /* my_comicsApp.swift */,
 				C68AFC8025DAE3F20005A376 /* ContentView.swift */,
@@ -473,8 +506,11 @@
 				C68AFC8125DAE3F20005A376 /* ContentView.swift in Sources */,
 				C65A648725DC4282006C1E05 /* ComicRow.swift in Sources */,
 				C65A649025DCACFD006C1E05 /* SearchBar.swift in Sources */,
+				C650BD7E25E34A12002F272B /* Entity.swift in Sources */,
 				C65A648C25DC42C7006C1E05 /* ComicDetailView.swift in Sources */,
+				C650BD7C25E34993002F272B /* ComicEntity.swift in Sources */,
 				C68AFC7F25DAE3F20005A376 /* my_comicsApp.swift in Sources */,
+				C650BD8025E3562A002F272B /* EntityID.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
