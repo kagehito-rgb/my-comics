@@ -14,6 +14,10 @@
 		C650BD7C25E34993002F272B /* ComicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD7B25E34993002F272B /* ComicEntity.swift */; };
 		C650BD7E25E34A12002F272B /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD7D25E34A12002F272B /* Entity.swift */; };
 		C650BD8025E3562A002F272B /* EntityID.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD7F25E3562A002F272B /* EntityID.swift */; };
+		C650BD8525E36DC6002F272B /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD8425E36DC6002F272B /* RealmProvider.swift */; };
+		C650BD8725E36E08002F272B /* RealmProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD8625E36E08002F272B /* RealmProviderProtocol.swift */; };
+		C650BD8C25E37036002F272B /* ComicRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD8B25E37036002F272B /* ComicRepositoryProtocol.swift */; };
+		C650BD8E25E3730B002F272B /* ComicRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650BD8D25E3730B002F272B /* ComicRepository.swift */; };
 		C65A647D25DC2BAB006C1E05 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A647C25DC2BAB006C1E05 /* HomeView.swift */; };
 		C65A648125DC41CF006C1E05 /* ComicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A648025DC41CF006C1E05 /* ComicList.swift */; };
 		C65A648725DC4282006C1E05 /* ComicRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A648625DC4282006C1E05 /* ComicRow.swift */; };
@@ -55,6 +59,10 @@
 		C650BD7B25E34993002F272B /* ComicEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicEntity.swift; sourceTree = "<group>"; };
 		C650BD7D25E34A12002F272B /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		C650BD7F25E3562A002F272B /* EntityID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityID.swift; sourceTree = "<group>"; };
+		C650BD8425E36DC6002F272B /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
+		C650BD8625E36E08002F272B /* RealmProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProviderProtocol.swift; sourceTree = "<group>"; };
+		C650BD8B25E37036002F272B /* ComicRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicRepositoryProtocol.swift; sourceTree = "<group>"; };
+		C650BD8D25E3730B002F272B /* ComicRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicRepository.swift; sourceTree = "<group>"; };
 		C65A647C25DC2BAB006C1E05 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C65A648025DC41CF006C1E05 /* ComicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicList.swift; sourceTree = "<group>"; };
 		C65A648625DC4282006C1E05 /* ComicRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicRow.swift; sourceTree = "<group>"; };
@@ -141,6 +149,8 @@
 		C650BD7925E2E512002F272B /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				C650BD8425E36DC6002F272B /* RealmProvider.swift */,
+				C650BD8625E36E08002F272B /* RealmProviderProtocol.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -153,6 +163,23 @@
 				C650BD7F25E3562A002F272B /* EntityID.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		C650BD8825E36FBA002F272B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				C650BD8A25E37017002F272B /* Comic */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		C650BD8A25E37017002F272B /* Comic */ = {
+			isa = PBXGroup;
+			children = (
+				C650BD8B25E37036002F272B /* ComicRepositoryProtocol.swift */,
+				C650BD8D25E3730B002F272B /* ComicRepository.swift */,
+			);
+			path = Comic;
 			sourceTree = "<group>";
 		};
 		C65A647B25DC2B54006C1E05 /* UI */ = {
@@ -242,6 +269,7 @@
 		C68AFC7D25DAE3F20005A376 /* my-comics */ = {
 			isa = PBXGroup;
 			children = (
+				C650BD8825E36FBA002F272B /* Repositories */,
 				C650BD7925E2E512002F272B /* Realm */,
 				C650BD7825E2E50A002F272B /* Models */,
 				C65A647B25DC2B54006C1E05 /* UI */,
@@ -504,9 +532,13 @@
 				C65A648A25DC42BA006C1E05 /* ComicEditView.swift in Sources */,
 				C650BD7725E2C1EF002F272B /* DateTextView.swift in Sources */,
 				C68AFC8125DAE3F20005A376 /* ContentView.swift in Sources */,
+				C650BD8C25E37036002F272B /* ComicRepositoryProtocol.swift in Sources */,
+				C650BD8525E36DC6002F272B /* RealmProvider.swift in Sources */,
+				C650BD8725E36E08002F272B /* RealmProviderProtocol.swift in Sources */,
 				C65A648725DC4282006C1E05 /* ComicRow.swift in Sources */,
 				C65A649025DCACFD006C1E05 /* SearchBar.swift in Sources */,
 				C650BD7E25E34A12002F272B /* Entity.swift in Sources */,
+				C650BD8E25E3730B002F272B /* ComicRepository.swift in Sources */,
 				C65A648C25DC42C7006C1E05 /* ComicDetailView.swift in Sources */,
 				C650BD7C25E34993002F272B /* ComicEntity.swift in Sources */,
 				C68AFC7F25DAE3F20005A376 /* my_comicsApp.swift in Sources */,
