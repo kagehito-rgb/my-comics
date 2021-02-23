@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-/// 漫画編集Viewに表示するデータ。
+/// 漫画ViewでComicEntityを扱う際の表示用データ。
 ///
 ///
 /// Objectを適用しているモデルの値を直接使わず

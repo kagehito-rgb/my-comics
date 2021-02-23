@@ -9,7 +9,7 @@ import SwiftUI
 
 /// 漫画一覧の列View
 struct ComicRow: View {
-    // TODO: - ViewModel経由で取得
+
     @State var isShowingEdit = false
 
     @ObservedObject var viewModel: ComicListViewModel
@@ -62,7 +62,6 @@ struct ComicRow: View {
                         ComicEditView(id: item.id)
                     }
                 Spacer().frame(width: 12)
-                // TODO: - 削除ボタン(ゴミ箱)タップ時にリスト&DBから削除 -
                 Image(systemName: "trash")
                     .resizable()
                     .scaledToFit()

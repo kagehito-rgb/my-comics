@@ -10,7 +10,9 @@ import Combine
 import RealmSwift
 
 protocol ComicListViewModelProtocol {
+    /// リストアイテムのセットアップ。
     func setUp() -> Void
+    /// id(主キー)に紐づくComic(漫画)データを削除。
     func delete(id: ComicID) -> Void
 }
 

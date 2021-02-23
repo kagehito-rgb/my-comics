@@ -11,7 +11,6 @@ import SwiftUI
 struct HomeView: View {
 
     @State var searchText: String = ""
-    // TODO: - ViewModel経由で取得
     @State var isShowingEdit = false
 
     // MARK: - body

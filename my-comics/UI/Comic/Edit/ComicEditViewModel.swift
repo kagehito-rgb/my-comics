@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 protocol ComicEditViewModelProtocol {
+    func setItem(id: ComicID) -> Void
     func addNew(item: ComicViewItem) -> Void
     func update(item: ComicViewItem) -> Void
 }

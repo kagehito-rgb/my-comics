@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 // 当アプリにおけるComic(漫画)のデータ操作を担うモジュール。
-// TODO: - Realm操作失敗時のハンドリング
+// TODO: - Realm操作失敗時のハンドリング(アラート表示)
 class ComicRepository: ComicRepositoryProtocol {
     var provider: RealmProviderProtocol
     let realm: Realm
