@@ -26,12 +26,37 @@ protocol ComicEntityProtocol: Entity, Identifiable {
 /// - NOTE
 /// モバイルDBに保存される事を想定している。
 class ComicEntity: Object, ComicEntityProtocol {
-    @objc dynamic var id: ComicID = 0
+    @objc dynamic var id: ComicID = UUID().uuidString
     @objc dynamic var title: String = ""
     @objc dynamic var haveVolume: Int = 1
     @objc dynamic var publishedVolume: Int = 1
     @objc dynamic var nextReleaseDate: Date = Date()
 
     override class func primaryKey() -> String? { "id" }
-    override class func indexedProperties() -> [String] { ["id"] }
+
+    /// - Remark
+    /// RealmのObjectにObject.init()のoverrideはサポートされていない
+    /// 新規作成の用途で使用する。
+    convenience init(
+        id: ComicID,
+        title: String,
+        haveVolume: Int,
+        publishedVolume: Int,
+        nextReleaseDate: Date
+    ) {
+        self.init()
+        self.id = id
+        self.title = title
+        self.haveVolume = haveVolume
+        self.publishedVolume = publishedVolume
+        self.nextReleaseDate = nextReleaseDate
+    }
+
+    /// 既存のエンティティの上書き
+    func overWrite<T:ComicEntityProtocol>(data: T) {
+        self.title = data.title
+        self.haveVolume = data.haveVolume
+        self.publishedVolume = data.publishedVolume
+        self.nextReleaseDate = data.nextReleaseDate
+    }
 }

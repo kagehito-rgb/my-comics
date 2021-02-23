@@ -59,9 +59,7 @@ struct ComicRow: View {
                         self.isShowingEdit.toggle()
                     }
                     .sheet(isPresented: $isShowingEdit) {
-                        ComicEditView(
-                            viewModel: ComicEditViewModel(comic: comic)
-                        )
+                        ComicEditView(id: comic.id)
                     }
                 Spacer().frame(width: 12)
                 // TODO: - 削除ボタン(ゴミ箱)タップ時にリスト&DBから削除 -

@@ -7,4 +7,4 @@
 
 import Foundation
 
-typealias ComicID = Int64
+typealias ComicID = String

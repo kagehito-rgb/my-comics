@@ -26,14 +26,15 @@ class ComicRepository: ComicRepositoryProtocol {
     }
 
     func addNew(entity: ComicEntity) -> Void {
-        entity.id = newID()
         try! realm.write {
             realm.add(entity)
         }
     }
 
-    func update(entity: ComicEntity) -> Void {
+    func update(id: ComicID, newEntity: ComicEntity) -> Void {
+        guard let entity = getByID(id: id) else { return }
         try! realm.write {
+            entity.overWrite(data: newEntity)
             realm.add(entity, update: .modified)
         }
     }
@@ -44,8 +45,7 @@ class ComicRepository: ComicRepositoryProtocol {
         }
     }
 
-    /// 追加されるレコードのIDを取得
-    private func newID() -> ComicID {
-        return (all().first?.id ?? 0) + 1
+    func getByID(id: ComicID) -> Results<ComicEntity>.Element? {
+        realm.objects(ComicEntity.self).first(where: { $0.id == id })
     }
 }

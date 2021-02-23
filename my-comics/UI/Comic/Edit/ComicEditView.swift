@@ -10,8 +10,9 @@ import SwiftUI
 /// 漫画の情報を編集するView
 struct ComicEditView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var viewModel: ComicEditViewModel
+    @StateObject var viewModel: ComicEditViewModel = ComicEditViewModel()
     var editMode: ComicEditMode = ComicEditMode.Edit
+    var id: ComicID? = nil
 
     // MARK: - body
     /// - Remark
@@ -22,13 +23,13 @@ struct ComicEditView: View {
                 Spacer().frame(height: 4)
                 VStack(alignment: .leading) {
                     Text("タイトル")
-                    TextField("タイトルを入力してください", text: $viewModel.comic.title)
+                    TextField("タイトルを入力してください", text: $viewModel.comicItem.title)
                 }
-                Stepper(value: $viewModel.comic.haveVolume) {
-                    Text("所持している巻数:  \(viewModel.comic.haveVolume)")
+                Stepper(value: $viewModel.comicItem.haveVolume) {
+                    Text("所持している巻数:  \(viewModel.comicItem.haveVolume)")
                 }
-                Stepper(value: $viewModel.comic.publishedVolume) {
-                    Text("既刊:  \(viewModel.comic.publishedVolume)")
+                Stepper(value: $viewModel.comicItem.publishedVolume) {
+                    Text("既刊:  \(viewModel.comicItem.publishedVolume)")
                 }
                 HStack {
                     Text("次巻予定日").frame(
@@ -37,7 +38,7 @@ struct ComicEditView: View {
                     )
                     DatePicker(
                         "次巻予定日",
-                        selection: $viewModel.comic.nextReleaseDate,
+                        selection: $viewModel.comicItem.nextReleaseDate,
                         displayedComponents: [.date]
                     )
                     .datePickerStyle(CompactDatePickerStyle())
@@ -56,20 +57,26 @@ struct ComicEditView: View {
             }, trailing: Button(action: {
                 switch editMode {
                 case .Edit:
-                    viewModel.update(entity: viewModel.comic)
+                    viewModel.update(item: viewModel.comicItem)
                 case .AddNew:
-                    viewModel.addNew(entity: viewModel.comic)
+                    viewModel.addNew(item: viewModel.comicItem)
                 }
+                self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Save")
             })
             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 16)
+            .onAppear {
+                if let comicID = id {
+                    viewModel.setItem(id: comicID)
+                }
+            }
         }
     }
 }
 
 struct ComicEditView_Previews: PreviewProvider {
     static var previews: some View {
-        ComicEditView(viewModel: ComicEditViewModel(comic: ComicEntity()))
+        ComicEditView()
     }
 }

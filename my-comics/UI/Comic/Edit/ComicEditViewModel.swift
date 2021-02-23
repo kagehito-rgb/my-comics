@@ -6,30 +6,54 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol ComicEditViewModelProtocol {
-    func addNew(entity: ComicEntity) -> Void
-    func update(entity: ComicEntity) -> Void
+    func addNew(item: ComicEditViewItem) -> Void
+    func update(item: ComicEditViewItem) -> Void
 }
 
 class ComicEditViewModel: ObservableObject {
-    @Published var comic: ComicEntity
-
+    @Published var comicItem: ComicEditViewItem = ComicEditViewItem()
     let repository: ComicRepositoryProtocol
 
-    init(comic: ComicEntity) {
+    init() {
         self.repository = ComicRepository(provider: RealmProvider.shared)
-        self.comic = comic
     }
 }
 
 extension ComicEditViewModel: ComicEditViewModelProtocol {
 
-    func addNew(entity: ComicEntity) {
+    func addNew(item: ComicEditViewItem) {
+        let entity = ComicEntity(
+            id: UUID().uuidString,
+            title: item.title,
+            haveVolume: item.haveVolume,
+            publishedVolume: item.publishedVolume,
+            nextReleaseDate: item.nextReleaseDate
+        )
         repository.addNew(entity: entity)
     }
 
-    func update(entity: ComicEntity) {
-        repository.update(entity: entity)
+    func update(item: ComicEditViewItem) {
+        let newEntity = ComicEntity(
+            id: item.id,
+            title: item.title,
+            haveVolume: item.haveVolume,
+            publishedVolume: item.publishedVolume,
+            nextReleaseDate: item.nextReleaseDate
+        )
+        repository.update(id: item.id, newEntity: newEntity)
+    }
+
+    func setItem(id: ComicID) {
+        guard let entity = repository.getByID(id: id) else { return }
+        self.comicItem = ComicEditViewItem(
+            id: entity.id,
+            title: entity.title,
+            haveVolume: entity.haveVolume,
+            publishedVolume: entity.publishedVolume,
+            nextReleaseDate: entity.nextReleaseDate
+        )
     }
 }
