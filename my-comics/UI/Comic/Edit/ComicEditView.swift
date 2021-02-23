@@ -25,10 +25,16 @@ struct ComicEditView: View {
                     Text("タイトル")
                     TextField("タイトルを入力してください", text: $viewModel.comicItem.title)
                 }
-                Stepper(value: $viewModel.comicItem.haveVolume) {
+                Stepper(
+                    value: $viewModel.comicItem.haveVolume,
+                    in: 1...viewModel.comicItem.publishedVolume
+                ) {
                     Text("所持している巻数:  \(viewModel.comicItem.haveVolume)")
                 }
-                Stepper(value: $viewModel.comicItem.publishedVolume) {
+                Stepper(
+                    value: $viewModel.comicItem.publishedVolume,
+                    in: 1...viewModel.comicItem.publishedVolume + 1
+                ) {
                     Text("既刊:  \(viewModel.comicItem.publishedVolume)")
                 }
                 HStack {
