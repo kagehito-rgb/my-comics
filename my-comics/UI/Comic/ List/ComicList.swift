@@ -13,12 +13,12 @@ struct ComicList: View {
 
     var body: some View {
         List {
-            ForEach(viewModel.comicEntities) { comic in
+            ForEach(viewModel.items) { item in
                 NavigationLink(
-                    destination: ComicDetailView(comic: comic)) {
+                    destination: ComicDetailView(item: item)) {
                     ComicRow(
                         viewModel: viewModel,
-                        comic: comic
+                        item: item
                     )
                 }
             }

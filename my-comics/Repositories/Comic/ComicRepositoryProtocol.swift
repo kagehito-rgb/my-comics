@@ -19,7 +19,7 @@ protocol ComicRepositoryProtocol {
     /// Comic(漫画)データの更新
     func update(id: ComicID, newEntity: ComicEntity) -> Void
     /// Comic(漫画)データの削除
-    func delete(entity: ComicEntity) -> Void
+    func delete(id: ComicID) -> Void
     /// 指定したIDと一致するComic(漫画)データを取得
     func getByID(id: ComicID) -> Results<ComicEntity>.Element?
 }

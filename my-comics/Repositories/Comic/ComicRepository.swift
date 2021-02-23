@@ -22,7 +22,7 @@ class ComicRepository: ComicRepositoryProtocol {
     }
 
     func all() -> Results<ComicEntity> {
-        return realm.objects(ComicEntity.self).sorted(byKeyPath: ComicEntity.primaryKey()!, ascending: false)
+        return realm.objects(ComicEntity.self)
     }
 
     func addNew(entity: ComicEntity) -> Void {
@@ -39,7 +39,8 @@ class ComicRepository: ComicRepositoryProtocol {
         }
     }
 
-    func delete(entity: ComicEntity) -> Void {
+    func delete(id: ComicID) -> Void {
+        guard let entity = getByID(id: id) else { return }
         try! realm.write {
             realm.delete(entity)
         }

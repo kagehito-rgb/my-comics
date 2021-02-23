@@ -13,7 +13,7 @@ struct ComicRow: View {
     @State var isShowingEdit = false
 
     @ObservedObject var viewModel: ComicListViewModel
-    var comic: ComicEntity
+    var item: ComicViewItem
 
     private let format = DateFormatBuilder().build()
 
@@ -24,7 +24,7 @@ struct ComicRow: View {
             // 一行目 漫画タイトル・所持巻数・既刊数
             HStack {
                 Spacer().frame(width: 12)
-                Text(comic.title)
+                Text(item.title)
                     .font(.system(size: 20))
                     .fontWeight(.bold)
                     .lineLimit(1)
@@ -32,9 +32,9 @@ struct ComicRow: View {
                     .frame(maxWidth: .infinity,
                            alignment: .leading)
                 Spacer().frame(width: 16)
-                Text("所持巻数\n\(comic.haveVolume)巻")
+                Text("所持巻数\n\(item.haveVolume)巻")
                     .font(.system(size: 12))
-                Text("既刊\n\(comic.publishedVolume)巻")
+                Text("既刊\n\(item.publishedVolume)巻")
                     .font(.system(size: 12))
                 Spacer().frame(width: 12)
             }
@@ -45,7 +45,7 @@ struct ComicRow: View {
                 Text("次巻")
                     .font(.system(size: 14))
                 DateTextView(
-                    date: comic.nextReleaseDate,
+                    date: item.nextReleaseDate,
                     format: format
                 ).font(.system(size: 14))
                 Spacer().frame(width: 16)
@@ -59,7 +59,7 @@ struct ComicRow: View {
                         self.isShowingEdit.toggle()
                     }
                     .sheet(isPresented: $isShowingEdit) {
-                        ComicEditView(id: comic.id)
+                        ComicEditView(id: item.id)
                     }
                 Spacer().frame(width: 12)
                 // TODO: - 削除ボタン(ゴミ箱)タップ時にリスト&DBから削除 -
@@ -70,7 +70,7 @@ struct ComicRow: View {
                     .font(.none)
                     .foregroundColor(.gray)
                     .onTapGesture {
-                        viewModel.delete(entity: comic)
+                        viewModel.delete(id: item.id)
                     }
                 Spacer().frame(width: 12)
             }
@@ -83,7 +83,7 @@ struct ComicRow_Previews: PreviewProvider {
     static var previews: some View {
         ComicRow(
             viewModel: ComicListViewModel(),
-            comic: ComicEntity()
+            item: ComicViewItem()
         )
     }
 }

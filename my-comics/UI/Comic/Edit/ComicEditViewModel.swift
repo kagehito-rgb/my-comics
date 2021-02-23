@@ -9,12 +9,12 @@ import Foundation
 import RealmSwift
 
 protocol ComicEditViewModelProtocol {
-    func addNew(item: ComicEditViewItem) -> Void
-    func update(item: ComicEditViewItem) -> Void
+    func addNew(item: ComicViewItem) -> Void
+    func update(item: ComicViewItem) -> Void
 }
 
 class ComicEditViewModel: ObservableObject {
-    @Published var comicItem: ComicEditViewItem = ComicEditViewItem()
+    @Published var comicItem: ComicViewItem = ComicViewItem()
     let repository: ComicRepositoryProtocol
 
     init() {
@@ -24,7 +24,7 @@ class ComicEditViewModel: ObservableObject {
 
 extension ComicEditViewModel: ComicEditViewModelProtocol {
 
-    func addNew(item: ComicEditViewItem) {
+    func addNew(item: ComicViewItem) {
         let entity = ComicEntity(
             id: UUID().uuidString,
             title: item.title,
@@ -35,7 +35,7 @@ extension ComicEditViewModel: ComicEditViewModelProtocol {
         repository.addNew(entity: entity)
     }
 
-    func update(item: ComicEditViewItem) {
+    func update(item: ComicViewItem) {
         let newEntity = ComicEntity(
             id: item.id,
             title: item.title,
@@ -48,7 +48,7 @@ extension ComicEditViewModel: ComicEditViewModelProtocol {
 
     func setItem(id: ComicID) {
         guard let entity = repository.getByID(id: id) else { return }
-        self.comicItem = ComicEditViewItem(
+        self.comicItem = ComicViewItem(
             id: entity.id,
             title: entity.title,
             haveVolume: entity.haveVolume,

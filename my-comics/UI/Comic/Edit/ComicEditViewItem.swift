@@ -14,7 +14,7 @@ import Combine
 /// Objectを適用しているモデルの値を直接使わず
 /// (「Cannot modify managed objects outside of a write transaction」(変更はトランザクションの中で行え的なやつ)
 /// と出たりする)、主にViewへの変更通知と表示を変えるためのデータとして扱う。
-class ComicEditViewItem: ObservableObject, ComicEntityProtocol  {
+class ComicViewItem: ObservableObject, ComicEntityProtocol  {
     // idの変更通知は必要ない
     let id: ComicID
     @Published var title: String
